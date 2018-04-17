@@ -39,7 +39,7 @@ public static class InfoPlistProcessor {
 
 		PlistDocument plist = GetInfoPlist(buildPath);
 
-		//URL typesを取得、設定されていなければ作成
+		//URL types
 		PlistElementArray urlTypes;
 		if(plist.root.values.ContainsKey(XcodeProjectSetting.URL_TYPES_KEY)){
 			urlTypes = plist.root[XcodeProjectSetting.URL_TYPES_KEY].AsArray();
@@ -48,7 +48,7 @@ public static class InfoPlistProcessor {
 			urlTypes = plist.root.CreateArray (XcodeProjectSetting.URL_TYPES_KEY);
 		}
 
-		//URL types内のitemを取得、設定されていなければ作成
+		//URL types
 		PlistElementDict itmeDict;
         //if(urlTypes.values.Count == 0){
         //	itmeDict = urlTypes.AddDict ();
@@ -58,7 +58,7 @@ public static class InfoPlistProcessor {
         //}
         itmeDict = urlTypes.AddDict();
 
-        //Document RoleとURL identifierを上書きで設定
+        //Document Role
         itmeDict.SetString (XcodeProjectSetting.URL_TYPE_ROLE_KEY,  "Editor");
 		itmeDict.SetString (XcodeProjectSetting.URL_IDENTIFIER_KEY,  urlIdentifier);
 
